@@ -107,7 +107,12 @@ async function run() {
                 res.json(result)
               })
 
-            
+            app.put('/review/approve/:id', async(req, res)=>{
+              const id = req.params.id;
+              const query = {_id:ObjectId(id)};
+              const result = await reviewsCollection.updateOne(query,{$set:{isPending:true}});
+              res.json(result)
+            })
         
   
     }
