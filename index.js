@@ -106,6 +106,13 @@ async function run() {
                 const result = await serviceCollection.deleteOne(query);
                 res.json(result)
               })
+              
+              app.delete('/services/delete/:id', async(req, res)=>{
+                const id = req.params.id;
+                const query = {_id:ObjectId(id)};
+                const result = await reviewsCollection.deleteOne(query);
+                res.json(result)
+              })
 
             app.put('/review/approve/:id', async(req, res)=>{
               const id = req.params.id;
